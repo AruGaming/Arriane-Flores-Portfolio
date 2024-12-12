@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #0F2027, #203A43, #2C5364);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1E293B;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #64FFDA;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #64FFDA;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6rem 10%;
+            background-color: #1A202C;
+            border-radius: 20px;
+            margin: 3rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .hero .content {
+            max-width: 60%; /* Adjusted width */
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            margin: 1rem 0;
+            line-height: 1.5;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: #64FFDA;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            color: #0A192F;
+            background-color: #64FFDA;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background-color: #52C7B8;
+        }
+
+        .social-icons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            color: #64FFDA;
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .profile {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 3rem; /* Added left margin for spacing */
+            margin-top: 2rem; /* Added top margin for spacing */
+        }
+
+        .profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Project Section */
+        #projects {
+            padding: 4rem 10%;
+            background-color: #1E293B;
+        }
+
+        #projects h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #64FFDA;
+            margin-bottom: 3rem;
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background-color: #2A3B4C;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: #64FFDA;
+            margin-bottom: 1rem;
+        }
+
+        .card-description {
+            font-size: 1.1rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .view-project-btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-color: #64FFDA;
+            color: #0A192F;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-project-btn:hover {
+            background-color: #52C7B8;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media screen and (max-width: 1200px) {
+            .hero {
+                flex-direction: column;
+                padding: 4rem 5%;
+            }
+
+            .content {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .profile {
+                width: 250px;
+                height: 250px;
+                margin-top: 2rem;
+                margin-left: 0; /* Remove left margin */
+            }
+
+            .profile img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            .menu {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 4rem 5%;
+            }
+
+            .content {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .profile {
+                width: 250px;
+                height: 250px;
+                margin-top: 2rem;
+            }
+
+            .profile img {
+                width: 200px;
+                height: 200px;
+            }
+
+            #projects h2 {
+                font-size: 2.2rem;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero {
+                padding: 2rem 5%;
+            }
+
+            .content h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .card-title {
+                font-size: 1.4rem;
+            }
+
+            .card-description {
+                font-size: 1rem;
+            }
+
+            .view-project-btn {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Portfolio.</div>
+        <nav>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero" id="home">
+            <div class="content">
+                <h1>My name is Arianne Flores</h1>
+                <p>I'm a <span class="highlight">Project Manager</span></p>
+                <p>Welcome to my portfolio!</p>
+                <a href="resume/me.pdf" download="me.pdf" class="btn">Download My Resume</a>
+                <div class="social-icons">
+                    <a href="#">🔗</a>
+                    <a href="#">💬</a>
+                    <a href="#">🎥</a>
+                    <a href="#">📁</a>
+                </div>
+            </div>
+            <div class="profile">
+                <img src="img/me.jpeg" alt="Profile Image">
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="projects-container">
+                <!-- Project Cards -->
+                <div class="card">
+                    <img src="img/project1.jpg" alt="QCU Admin Building Enrollment Scheduler">
+                    <div class="card-content">
+                        <h3 class="card-title">QCU Admin Building Enrollment Scheduler</h3>
+                        <p class="card-description">An enrollment system designed for Quezon City University to manage building schedules.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/project2.jpg" alt="Dino Game Java">
+                    <div class="card-content">
+                        <h3 class="card-title">Dino Game in Java</h3>
+                        <p class="card-description">A game inspired by the Chrome Dino Game, created in Java.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/Payroll.jpg" alt="Payroll System in VB">
+                    <div class="card-content">
+                        <h3 class="card-title">Payroll System in VB</h3>
+                        <p class="card-description">A Generic Payroll system created in VB.NET for employee management and salary calculations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
